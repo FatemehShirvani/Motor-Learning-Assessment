@@ -77,7 +77,7 @@ The best cross-validated learning-stage classifier reached **82% accuracy** when
 
 ### Final shape-specific classification results
 
-![Comparison of SVC and Random Forest classification accuracy for every shape and the pooled dataset](figures/model-accuracy-comparison.svg)
+![Final classification results table for every shape and the pooled dataset](figures/final-results-table.png)
 
 The final leave-one-subject-out evaluation compared the strongest support-vector classifier and Random Forest configuration for each shape:
 
@@ -118,7 +118,9 @@ Mean velocity changed substantially after the first session, but its later evolu
 
 ## Public reference implementation
 
-The `src/motor_learning` package provides a data-independent implementation of the main computational steps described in the presentation:
+The repository now includes a sanitized, code-only copy of the original analysis notebook at `notebooks/motor_learning_analysis.ipynb`. Its 53 code cells cover MATLAB data loading, movement-feature extraction, SSIM analysis, classification, leave-one-subject-out validation, and clustering. All saved cell outputs, embedded figures, execution counts, and attachments were removed before publication because the underlying study data are confidential.
+
+The `src/motor_learning` package additionally provides a compact, data-independent reference implementation of the main computational steps described in the presentation:
 
 - removal of consecutive repeated samples;
 - linear resampling to a fixed frequency;
@@ -127,7 +129,15 @@ The `src/motor_learning` package provides a data-independent implementation of t
 - movement-time, path-length, velocity, curvature, acceleration, and jerk features; and
 - leave-one-participant-out evaluation for an aggregate feature matrix.
 
-The private archive did not contain the original experimental analysis pipeline—only a file-renaming utility. The code published here is therefore a clean **reference implementation reconstructed from the documented methodology**, not a claim that these are the exact scripts used to produce every reported number.
+The notebook was supplied separately from the private data archive. The reusable package is a clean **reference implementation reconstructed from the documented methodology**; it does not replace or rewrite the original notebook.
+
+To inspect or run the notebook in a compatible environment:
+
+```bash
+python -m pip install -r requirements-notebook.txt
+```
+
+The notebook retains its original Google Colab directory references so the published code remains traceable to the experiment. Running it still requires authorized access to the excluded `.mat`, image, CSV, and spreadsheet inputs.
 
 No study data are required to check the pipeline. The included example generates a synthetic ellipse:
 
@@ -150,9 +160,11 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 ├── examples/
 │   └── synthetic_demo.py
 ├── figures/
+│   ├── final-results-table.png
 │   ├── mean-velocity-by-session.png
-│   ├── model-accuracy-comparison.svg
 │   └── ssim-by-session.png
+├── notebooks/
+│   └── motor_learning_analysis.ipynb
 ├── src/motor_learning/
 │   ├── __init__.py
 │   ├── evaluation.py
@@ -160,7 +172,8 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 │   └── preprocessing.py
 ├── .gitignore
 ├── README.md
+├── requirements-notebook.txt
 └── requirements.txt
 ```
 
-The original analysis archive contained participant data and a small file-renaming utility, but not a complete, publication-ready analysis pipeline. To ensure no confidential paths or identifiers are exposed, neither the archive nor the renaming utility is included.
+The original data archive and its file-renaming utility are not included. The public notebook contains code only and still expects the private project directory structure when executed; users must supply their own appropriately authorized data.
