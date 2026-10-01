@@ -73,6 +73,29 @@ The best cross-validated learning-stage classifier reached **82% accuracy** when
 
 ## Aggregate results
 
+### Final shape-specific classification results
+
+![Final shape-specific classification results from the project presentation](figures/classification-results.png)
+
+The final leave-one-subject-out evaluation compared the strongest support-vector classifier and Random Forest configuration for each shape:
+
+| Shape | SVC model | SVC accuracy | Random Forest accuracy |
+| --- | --- | ---: | ---: |
+| B | RBF | **96%** | 92% |
+| M | Linear | 82% | **91%** |
+| O | RBF | 57% | **83%** |
+| Star | Linear | 77% | **83%** |
+| Clover | RBF | 85% | **86%** |
+| All shapes | Polynomial | 67% | **79%** |
+
+The **96%** result is the highest shape-specific accuracy, whereas **79%** is the best pooled result across all five shapes. This distinction matters: the per-shape models can specialize in one trajectory geometry, while the pooled model must generalize across substantially different shapes.
+
+### Subject-independent session-grouping results
+
+![Subject-based cross-validation results for alternative session groupings](figures/subject-based-validation.png)
+
+The best subject-independent session grouping compared session 1 with sessions 5–7 and reached **81% LOSO accuracy** using mean velocity, smoothness, movement time, curvature, acceleration, and jerk. Session 1 versus sessions 6–7 reached **80% LOSO accuracy**. These experiments test whether early and later learning stages remain distinguishable for a participant completely excluded from model training.
+
 ### Structural similarity over practice
 
 ![Normalized average SSIM score across seven sessions for five shapes](figures/ssim-by-session.png)
@@ -102,11 +125,12 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 ```text
 .
 ├── figures/
+│   ├── classification-results.png
 │   ├── mean-velocity-by-session.png
-│   └── ssim-by-session.png
+│   ├── ssim-by-session.png
+│   └── subject-based-validation.png
 ├── .gitignore
 └── README.md
 ```
 
 The original analysis archive contained participant data and a small file-renaming utility, but not a complete, publication-ready analysis pipeline. To avoid presenting housekeeping code as the scientific implementation—and to ensure no confidential paths or identifiers are exposed—this repository documents the validated methodology and aggregate results only.
-
