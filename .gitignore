@@ -1,0 +1,37 @@
+# Confidential study data
+data/
+dataset/
+datasets/
+raw/
+participants/
+Behavioral/
+features/
+pics/
+pics1/
+
+# Participant-level and tabular data
+*.mat
+*.csv
+*.tsv
+*.xls
+*.xlsx
+*.json
+
+# Presentations and local reports
+*.ppt
+*.pptx
+*.pdf
+
+# Python and notebook artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Editor and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

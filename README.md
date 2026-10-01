@@ -1,0 +1,112 @@
+# Motor Learning Assessment from Foot-Drawn Shapes
+
+This research project investigates whether progression in a novel motor task can be identified from movement trajectories recorded across repeated practice sessions. Participants reproduced five shapes with their foot over seven sessions, and the resulting trajectories were analyzed through structural similarity, movement timing, kinematics, clustering, and supervised classification.
+
+The work was completed from June to September 2024 with the Artificial Intelligence Research Group at Isfahan University of Technology, using a study designed and recorded by the Motor Control and Computational Neuroscience Laboratory at the University of Tehran.
+
+> **Data privacy:** Participant-level recordings, coordinates, drawings, spreadsheets, and derived feature tables are confidential and are intentionally excluded from this public repository. Only de-identified aggregate figures and methodological documentation are published here.
+
+## Research question
+
+Can changes in trajectory shape and movement dynamics distinguish early practice from later stages of learning, both across the group and for a participant not seen during training?
+
+The study included:
+
+- 12 healthy volunteers (6 women and 6 men; mean age approximately 23 years)
+- 7 practice sessions
+- 5 target shapes: **B**, **M**, **O**, **Star**, and **Clover**
+- 5 repetitions of each shape per session
+
+The aim was not only to measure improvement, but also to determine which movement characteristics best describe the transition from beginner to more practiced performance.
+
+## Analysis workflow
+
+### 1. Trajectory preprocessing
+
+The recorded coordinates required several corrections before features could be compared reliably:
+
+- normalized coordinate conventions that differed between acquisition sessions;
+- removed repeated samples caused by coordinate quantization;
+- reconstructed missing intervals with linear interpolation;
+- resampled trajectories to a consistent 200 Hz temporal basis;
+- handled incomplete endpoints and obvious velocity outliers; and
+- smoothed signals before computing higher-order derivatives.
+
+Velocity, acceleration, and jerk were estimated with a five-point finite-difference stencil to reduce the instability of simple numerical differentiation.
+
+### 2. Feature extraction
+
+Each trial was represented using complementary structural and kinematic measurements:
+
+| Feature | What it captures |
+| --- | --- |
+| Structural Similarity Index (SSIM) | Resemblance between a participant's drawing and the reference shape |
+| Movement time | Duration required to complete the drawing |
+| Mean tangential velocity | Overall movement speed |
+| Curvature | Changes in the trajectory's direction and geometry |
+| Acceleration | Changes in movement velocity |
+| Jerk | Rapid changes in acceleration |
+| Smoothness | Continuity and control of the movement |
+
+### 3. Unsupervised analysis
+
+The analysis compared several approaches for discovering learning-related structure without stage labels:
+
+- K-means;
+- kernel PCA followed by K-means;
+- Gaussian mixture models;
+- spectral clustering; and
+- kernel PCA followed by spectral clustering.
+
+The most successful shape-specific clustering result was obtained for the **Star** trajectory with a Gaussian mixture model, reaching **96%** agreement with the evaluated learning-stage grouping. Performance varied by shape, showing that geometric complexity and movement strategy affected how clearly sessions separated.
+
+### 4. Supervised learning and validation
+
+Support-vector classifiers with linear, radial-basis, and polynomial kernels were compared with decision trees and random forests. Statistical feature ranking, recursive feature elimination, and L1 regularization were explored for feature selection.
+
+Two validation settings were used:
+
+- conventional cross-validation to compare session groupings and feature subsets; and
+- leave-one-subject-out (LOSO) validation to test generalization to an unseen participant.
+
+The best cross-validated learning-stage classifier reached **82% accuracy** when comparing session 1 with sessions 5–7, with movement duration and curvature emerging as especially informative. In the stricter participant-independent evaluation, the best LOSO result reached **81% accuracy** for the same early-versus-late session grouping using a broader set of kinematic features.
+
+## Aggregate results
+
+### Structural similarity over practice
+
+![Normalized average SSIM score across seven sessions for five shapes](figures/ssim-by-session.png)
+
+The aggregate SSIM curves generally rise in later sessions, indicating that reproduced trajectories became structurally closer to their target shapes. The pattern is not perfectly monotonic: individual shapes show temporary drops, which is expected in a small repeated-measures motor-learning study.
+
+### Movement velocity over practice
+
+![Normalized mean velocity across seven sessions for five shapes](figures/mean-velocity-by-session.png)
+
+Mean velocity changed substantially after the first session, but its later evolution differed across shapes. This supports using several structural and kinematic features together rather than treating speed alone as a universal measure of learning.
+
+## Main findings
+
+- Later-session drawings were generally more similar to the intended shapes.
+- Movement duration, curvature, smoothness, and acceleration contributed useful learning-stage information.
+- Classification quality depended on the target shape; one model and feature subset did not dominate every condition.
+- Strong shape-specific scores did not automatically translate into equally strong performance when all shapes were pooled.
+- Participant-independent validation remained above 80% in the best early-versus-late configuration, suggesting that the extracted features captured patterns beyond individual drawing style.
+
+## Limitations and next steps
+
+This was an exploratory study with a small cohort, and some acquisition inconsistencies required careful preprocessing. Future work could expand the participant pool, separate simple and complex shapes more explicitly, improve velocity-derived descriptors, add statistical and learned trajectory representations, and evaluate deep-learning models once a sufficiently large dataset is available. The same framework could also be adapted to rehabilitation tasks in which changes in movement control must be monitored over time.
+
+## Repository contents
+
+```text
+.
+├── figures/
+│   ├── mean-velocity-by-session.png
+│   └── ssim-by-session.png
+├── .gitignore
+└── README.md
+```
+
+The original analysis archive contained participant data and a small file-renaming utility, but not a complete, publication-ready analysis pipeline. To avoid presenting housekeeping code as the scientific implementation—and to ensure no confidential paths or identifiers are exposed—this repository documents the validated methodology and aggregate results only.
+
