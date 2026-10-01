@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Classification accuracy by shape and model</title>
+  <desc id="desc">Grouped bars compare the best support vector classifier and Random Forest accuracies for B, M, O, Star, Clover, and all shapes under leave-one-subject-out evaluation.</desc>
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <text x="72" y="60" font-family="Arial, sans-serif" font-size="31" font-weight="700" fill="#172033">Classification accuracy by shape and model</text>
+  <text x="72" y="92" font-family="Arial, sans-serif" font-size="17" fill="#5d687a">Leave-one-subject-out evaluation · values reported in the final presentation</text>
+
+  <rect x="835" y="43" width="18" height="18" rx="3" fill="#5aaec4"/>
+  <text x="864" y="58" font-family="Arial, sans-serif" font-size="17" fill="#39465a">Best SVC</text>
+  <rect x="985" y="43" width="18" height="18" rx="3" fill="#ef8a62"/>
+  <text x="1014" y="58" font-family="Arial, sans-serif" font-size="17" fill="#39465a">Random Forest</text>
+
+  <g stroke="#d9e0e8" stroke-width="1">
+    <line x1="170" y1="130" x2="170" y2="600"/>
+    <line x1="357" y1="130" x2="357" y2="600"/>
+    <line x1="544" y1="130" x2="544" y2="600"/>
+    <line x1="731" y1="130" x2="731" y2="600"/>
+    <line x1="918" y1="130" x2="918" y2="600"/>
+    <line x1="1105" y1="130" x2="1105" y2="600"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="15" fill="#687487" text-anchor="middle">
+    <text x="170" y="625">50</text>
+    <text x="357" y="625">60</text>
+    <text x="544" y="625">70</text>
+    <text x="731" y="625">80</text>
+    <text x="918" y="625">90</text>
+    <text x="1105" y="625">100%</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#263247" text-anchor="end">
+    <text x="140" y="171">B</text>
+    <text x="140" y="250">M</text>
+    <text x="140" y="329">O</text>
+    <text x="140" y="408">Star</text>
+    <text x="140" y="487">Clover</text>
+    <text x="140" y="566">All shapes</text>
+  </g>
+
+  <!-- B: 96 / 92 -->
+  <rect x="170" y="143" width="860" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="173" width="785" height="24" rx="5" fill="#ef8a62"/>
+  <text x="1043" y="161" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">96%</text>
+  <text x="968" y="191" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">92%</text>
+
+  <!-- M: 82 / 91 -->
+  <rect x="170" y="222" width="598" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="252" width="767" height="24" rx="5" fill="#ef8a62"/>
+  <text x="781" y="240" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">82%</text>
+  <text x="950" y="270" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">91%</text>
+
+  <!-- O: 57 / 83 -->
+  <rect x="170" y="301" width="131" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="331" width="617" height="24" rx="5" fill="#ef8a62"/>
+  <text x="314" y="319" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">57%</text>
+  <text x="800" y="349" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">83%</text>
+
+  <!-- Star: 77 / 83 -->
+  <rect x="170" y="380" width="505" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="410" width="617" height="24" rx="5" fill="#ef8a62"/>
+  <text x="688" y="398" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">77%</text>
+  <text x="800" y="428" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">83%</text>
+
+  <!-- Clover: 85 / 86 -->
+  <rect x="170" y="459" width="654" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="489" width="673" height="24" rx="5" fill="#ef8a62"/>
+  <text x="837" y="477" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">85%</text>
+  <text x="856" y="507" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">86%</text>
+
+  <!-- All: 67 / 79 -->
+  <rect x="170" y="538" width="318" height="24" rx="5" fill="#5aaec4"/>
+  <rect x="170" y="568" width="542" height="24" rx="5" fill="#ef8a62"/>
+  <text x="501" y="556" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">67%</text>
+  <text x="725" y="586" font-family="Arial, sans-serif" font-size="17" font-weight="700" fill="#263247">79%</text>
+
+  <text x="637" y="660" font-family="Arial, sans-serif" font-size="15" fill="#687487" text-anchor="middle">Accuracy (%)</text>
+</svg>
+
