@@ -4,6 +4,8 @@ This research project investigates whether progression in a novel motor task can
 
 The work was completed from June to September 2024 with the Artificial Intelligence Research Group at Isfahan University of Technology, using a study designed and recorded by the Motor Control and Computational Neuroscience Laboratory at the University of Tehran.
 
+**Tools:** MATLAB was used during the original data-extraction stage, followed by Python-based preprocessing, feature analysis, clustering, classification, and validation. The public reference implementation in this repository is written in Python because the original analysis notebook and MATLAB scripts were not present in the available archive.
+
 > **Data privacy:** Participant-level recordings, coordinates, drawings, spreadsheets, and derived feature tables are confidential and are intentionally excluded from this public repository. Only de-identified aggregate figures and methodological documentation are published here.
 
 ## Research question
