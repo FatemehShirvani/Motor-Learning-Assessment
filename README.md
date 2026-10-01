@@ -114,6 +114,29 @@ Mean velocity changed substantially after the first session, but its later evolu
 - Strong shape-specific scores did not automatically translate into equally strong performance when all shapes were pooled.
 - Participant-independent validation remained above 80% in the best early-versus-late configuration, suggesting that the extracted features captured patterns beyond individual drawing style.
 
+## Public reference implementation
+
+The `src/motor_learning` package provides a data-independent implementation of the main computational steps described in the presentation:
+
+- removal of consecutive repeated samples;
+- linear resampling to a fixed frequency;
+- trajectory smoothing;
+- five-point numerical differentiation;
+- movement-time, path-length, velocity, curvature, acceleration, and jerk features; and
+- leave-one-participant-out evaluation for an aggregate feature matrix.
+
+The private archive did not contain the original experimental analysis pipeline—only a file-renaming utility. The code published here is therefore a clean **reference implementation reconstructed from the documented methodology**, not a claim that these are the exact scripts used to produce every reported number.
+
+No study data are required to check the pipeline. The included example generates a synthetic ellipse:
+
+```bash
+python -m pip install -r requirements.txt
+$env:PYTHONPATH = "src"  # PowerShell
+python examples/synthetic_demo.py
+```
+
+For participant-independent evaluation, anonymized participant labels may be passed to `leave_one_participant_out_accuracy` only as fold groups. They are never included among the predictive features.
+
 ## Limitations and next steps
 
 This was an exploratory study with a small cohort, and some acquisition inconsistencies required careful preprocessing. Future work could expand the participant pool, separate simple and complex shapes more explicitly, improve velocity-derived descriptors, add statistical and learned trajectory representations, and evaluate deep-learning models once a sufficiently large dataset is available. The same framework could also be adapted to rehabilitation tasks in which changes in movement control must be monitored over time.
@@ -122,12 +145,20 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 
 ```text
 .
+├── examples/
+│   └── synthetic_demo.py
 ├── figures/
 │   ├── mean-velocity-by-session.png
 │   ├── model-accuracy-comparison.svg
 │   └── ssim-by-session.png
+├── src/motor_learning/
+│   ├── __init__.py
+│   ├── evaluation.py
+│   ├── features.py
+│   └── preprocessing.py
 ├── .gitignore
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
-The original analysis archive contained participant data and a small file-renaming utility, but not a complete, publication-ready analysis pipeline. To avoid presenting housekeeping code as the scientific implementation—and to ensure no confidential paths or identifiers are exposed—this repository documents the validated methodology and aggregate results only.
+The original analysis archive contained participant data and a small file-renaming utility, but not a complete, publication-ready analysis pipeline. To ensure no confidential paths or identifiers are exposed, neither the archive nor the renaming utility is included.
