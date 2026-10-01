@@ -90,13 +90,7 @@ The final leave-one-subject-out evaluation compared the strongest support-vector
 
 The **96%** result is the highest shape-specific accuracy, whereas **79%** is the best pooled result across all five shapes. This distinction matters: the per-shape models can specialize in one trajectory geometry, while the pooled model must generalize across substantially different shapes.
 
-The original final-results table from the presentation is retained below for traceability.
-
-![Final shape-specific classification results from the project presentation](figures/classification-results.png)
-
 ### Subject-independent session-grouping results
-
-![Subject-based cross-validation results for alternative session groupings](figures/subject-based-validation.png)
 
 The best subject-independent session grouping compared session 1 with sessions 5–7 and reached **81% LOSO accuracy** using mean velocity, smoothness, movement time, curvature, acceleration, and jerk. Session 1 versus sessions 6–7 reached **80% LOSO accuracy**. These experiments test whether early and later learning stages remain distinguishable for a participant completely excluded from model training.
 
@@ -129,11 +123,9 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 ```text
 .
 ├── figures/
-│   ├── classification-results.png
 │   ├── mean-velocity-by-session.png
 │   ├── model-accuracy-comparison.svg
-│   ├── ssim-by-session.png
-│   └── subject-based-validation.png
+│   └── ssim-by-session.png
 ├── .gitignore
 └── README.md
 ```
