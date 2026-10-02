@@ -173,5 +173,3 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 ├── requirements-analysis.txt
 └── requirements.txt
 ```
-
-The original data archive and its file-renaming utility are not included. The public analysis script contains code only and still expects the private project directory structure when executed; users must supply their own appropriately authorized data.
