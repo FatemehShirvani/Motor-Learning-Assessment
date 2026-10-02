@@ -4,8 +4,6 @@ This research project investigates whether progression in a novel motor task can
 
 This B.Sc. project was completed under the supervision of [Dr. Fariba Bahrami](https://scholar.google.com/citations?user=cP6BfUMAAAAJ&hl=en), Associate Professor in the School of Electrical and Computer Engineering at the University of Tehran.
 
-**Tools:** MATLAB was used during the original data-extraction stage, followed by Python-based preprocessing, feature analysis, clustering, classification, and validation. The sanitized original Python notebook is included in this repository; the MATLAB extraction scripts were not present in the available project files.
-
 > **Data privacy:** Participant-level recordings, coordinates, drawings, spreadsheets, and derived feature tables are confidential and are intentionally excluded from this public repository. Only de-identified aggregate figures and methodological documentation are published here.
 
 ## Research question
