@@ -116,7 +116,7 @@ Mean velocity changed substantially after the first session, but its later evolu
 
 ## Public reference implementation
 
-The repository now includes a sanitized, code-only copy of the original analysis notebook at `notebooks/motor_learning_analysis.ipynb`. Its 53 code cells cover MATLAB data loading, movement-feature extraction, SSIM analysis, classification, leave-one-subject-out validation, and clustering. All saved cell outputs, embedded figures, execution counts, and attachments were removed before publication because the underlying study data are confidential.
+The repository includes the original analysis code as a regular Python file at `analysis/motor_learning_analysis.py`. Its sections preserve the order of the 53 original notebook code cells and cover MAT-file loading, movement-feature extraction, SSIM analysis, classification, leave-one-subject-out validation, and clustering. Saved outputs, embedded figures, execution state, and attachments were not transferred because the underlying study data are confidential.
 
 The `src/motor_learning` package additionally provides a compact, data-independent reference implementation of the main computational steps described in the presentation:
 
@@ -127,15 +127,15 @@ The `src/motor_learning` package additionally provides a compact, data-independe
 - movement-time, path-length, velocity, curvature, acceleration, and jerk features; and
 - leave-one-participant-out evaluation for an aggregate feature matrix.
 
-The notebook was supplied separately from the private data archive. The reusable package is a clean **reference implementation reconstructed from the documented methodology**; it does not replace or rewrite the original notebook.
+The original analysis was supplied separately from the private data archive and exported to a sectioned Python script using `# %%` markers. The reusable package is a clean **reference implementation reconstructed from the documented methodology**; it does not replace or rewrite the original analysis.
 
-To inspect or run the notebook in a compatible environment:
+To inspect or run the full analysis in a compatible environment:
 
 ```bash
-python -m pip install -r requirements-notebook.txt
+python -m pip install -r requirements-analysis.txt
 ```
 
-The notebook retains its original Google Colab directory references so the published code remains traceable to the experiment. Running it still requires authorized access to the excluded `.mat`, image, CSV, and spreadsheet inputs.
+The analysis script retains its original Google Colab directory references so the published code remains traceable to the experiment. Running it still requires authorized access to the excluded `.mat`, image, CSV, and spreadsheet inputs.
 
 No study data are required to check the pipeline. The included example generates a synthetic ellipse:
 
@@ -155,14 +155,14 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 
 ```text
 .
+├── analysis/
+│   └── motor_learning_analysis.py
 ├── examples/
 │   └── synthetic_demo.py
 ├── figures/
 │   ├── final-results-table.png
 │   ├── mean-velocity-by-session.png
 │   └── ssim-by-session.png
-├── notebooks/
-│   └── motor_learning_analysis.ipynb
 ├── src/motor_learning/
 │   ├── __init__.py
 │   ├── evaluation.py
@@ -170,8 +170,8 @@ This was an exploratory study with a small cohort, and some acquisition inconsis
 │   └── preprocessing.py
 ├── .gitignore
 ├── README.md
-├── requirements-notebook.txt
+├── requirements-analysis.txt
 └── requirements.txt
 ```
 
-The original data archive and its file-renaming utility are not included. The public notebook contains code only and still expects the private project directory structure when executed; users must supply their own appropriately authorized data.
+The original data archive and its file-renaming utility are not included. The public analysis script contains code only and still expects the private project directory structure when executed; users must supply their own appropriately authorized data.
